@@ -42,23 +42,26 @@ public class Con2 {
         email = Signin.emailsigin.getText();
         pwd = Signin.pwdsignin.getText();
 
-            String sql = "SELECT * FROM registration_details WHERE Email=?";
-                ps = con.prepareStatement(sql);
-                ps.setString(1, email);
-                rs = ps.executeQuery();
+        String sql = "SELECT * FROM registration_details WHERE Email=?";
+        ps = con.prepareStatement(sql);
+        ps.setString(1, email);
+        rs = ps.executeQuery();
 
-            if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Email already registered!", "Error",
-                                JOptionPane.HEIGHT);        
-            } else if (name.isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Enter name!");
-            } else if (number.isEmpty()) {
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(null, "Email already registered!", "Error", JOptionPane.HEIGHT);
+        } else if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter name!");
+        } else if (number.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter number!");
-            } else if (email.isEmpty()) {
+        } else if (email.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter email!");
-            } else if (pwd.isEmpty()) {
+            
+        } else if (pwd.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter password!");
-            } else {
+        } else if (!isValidPassword(pwd)) {
+            JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long and contain at least one uppercase letter,\none lowercase letter, one digit, and one special character.",
+                    "Invalid Password", JOptionPane.WARNING_MESSAGE);
+        } else {
             double n = Double.parseDouble(number);
             sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
             ps = con.prepareStatement(sql);
@@ -77,6 +80,12 @@ public class Con2 {
                 JOptionPane.showMessageDialog(rootPane, "Sign in Failed. Please try again.");
             }
         }
+    }
+
+    private boolean isValidPassword(String password) {
+        // Password validation logic
+        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%^&*()])[A-Za-z\\d@#$!%^&*()]{8,}$";
+        return password.matches(regex);
     }
 
     @SuppressWarnings("deprecation")
