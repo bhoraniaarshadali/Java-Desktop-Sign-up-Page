@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/pom.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE project SYSTEM "pom.dtd">
+
+    <project>
+    ...
+    </project>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT project (modelVersion|groupId|artifactId|version|properties|dependencies|build)*>
+<!ATTLIST project
+    xmlns CDATA #IMPLIED
+    xsi:schemaLocation CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT modelVersion (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT groupId (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT artifactId (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT version (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT properties (project.build.sourceEncoding|maven.compiler.source|maven.compiler.target)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT project.build.sourceEncoding (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT maven.compiler.source (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT maven.compiler.target (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT dependencies (dependency)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT dependency (groupId|artifactId|version|type)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT type (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT build (plugins)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT plugins (plugin)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT plugin (groupId|artifactId|version|configuration|executions)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT configuration (release|mainClass|options)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT release (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT mainClass (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT executions (execution)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT execution (id|configuration)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT id (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT options (option)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT option (#PCDATA)>

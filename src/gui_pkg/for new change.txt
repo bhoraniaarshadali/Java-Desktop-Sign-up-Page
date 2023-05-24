@@ -1,0 +1,44 @@
+void signin() throws ClassNotFoundException, SQLException {
+        getCon();
+        name = Signin.namesigin.getText();
+        number = Signin.numsigin.getText();
+        email = Signin.emailsigin.getText();
+        pwd = Signin.pwdsignin.getText();
+	
+	
+	if (int i=0) {
+	String sql = "SELECT * FROM registration_details WHERE Email=?;
+                ps = con.prepareStatement(sql);
+                ps.setString(3, email);
+                rs = ps.executeQuery();
+		
+	}	
+        else if (name.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter name!");
+        } else if (number.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter number!");
+        } else if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter email!");
+        } else if (pwd.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter password!");
+        } else {
+            
+	    double n = Double.parseDouble(number);
+            String sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setDouble(2, n);
+            ps.setString(3, email);
+            ps.setString(4, pwd);
+
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(rootPane, "Sign in Successful!");
+                Welcome_Page obj = new Welcome_Page();
+                obj.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Sign in Failed. Please try again.");
+            }
+        }
+    }
