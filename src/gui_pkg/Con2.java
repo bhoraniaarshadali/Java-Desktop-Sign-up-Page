@@ -34,7 +34,6 @@ public class Con2 {
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects", "root", "");
     }
 
-    @SuppressWarnings("deprecation")
 void signin() throws ClassNotFoundException, SQLException {
     getCon();
     name = Signin.namesigin.getText();
@@ -59,25 +58,57 @@ void signin() throws ClassNotFoundException, SQLException {
         JOptionPane.showMessageDialog(null, "Invalid Email address!", "Error", JOptionPane.WARNING_MESSAGE);
     } else if (pwd.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Enter password!");
-    } else if (!isValidPassword(pwd)) {
-        JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.", "Invalid Password", JOptionPane.WARNING_MESSAGE);
     } else {
-        double n = Double.parseDouble(number);
-        sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
-        ps = con.prepareStatement(sql);
-        ps.setString(1, name);
-        ps.setDouble(2, n);
-        ps.setString(3, email);
-        ps.setString(4, pwd);
+        boolean hasLowerCase = pwd.matches(".*[a-z].*");
+        boolean hasUpperCase = pwd.matches(".*[A-Z].*");
+        boolean hasDigit = pwd.matches(".*\\d.*");
+        boolean hasSymbol = pwd.matches(".*[@#$!%^&*()].*");
 
-        int rowsAffected = ps.executeUpdate();
+        // Array to store the error messages
+        String[] errorMessages = new String[4];
+        int index = 0;
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Sign in Successful!");
-            Welcome_Page obj = new Welcome_Page();
-            obj.setVisible(true);
+        if (!hasLowerCase) {
+            errorMessages[index++] = "Password must contain at least one lowercase letter.";
+        }
+
+        if (!hasUpperCase) {
+            errorMessages[index++] = "Password must contain at least one uppercase letter.";
+        }
+
+        if (!hasDigit) {
+            errorMessages[index++] = "Password must contain at least one digit.";
+        }
+
+        if (!hasSymbol) {
+            errorMessages[index++] = "Password must contain at least one symbol character.";
+        }
+
+        if (index > 0) {
+            // Display individual pop-up messages for each requirement
+            for (int i = 0; i < index; i++) {
+                JOptionPane.showMessageDialog(null, errorMessages[i], "Invalid Password", JOptionPane.WARNING_MESSAGE);
+            }
+        } else if (pwd.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Password should be at least 8 characters long.", "Invalid Password", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Sign in Failed. Please try again.");
+            double n = Double.parseDouble(number);
+            sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setDouble(2, n);
+            ps.setString(3, email);
+            ps.setString(4, pwd);
+
+            int rowsAffected = ps.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Sign in Successful!");
+                Welcome_Page obj = new Welcome_Page();
+                obj.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.");
+            }
         }
     }
 }
@@ -88,11 +119,7 @@ private boolean isValidGmailAddress(String email) {
     return email.matches(regex);
 }
 
-private boolean isValidPassword(String password) {
-    // Password validation logic
-    String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%^&*()])[A-Za-z\\d@#$!%^&*()]{8,}$";
-    return password.matches(regex);
-}
+
     @SuppressWarnings("deprecation")
     void login() throws ClassNotFoundException {
         try {
