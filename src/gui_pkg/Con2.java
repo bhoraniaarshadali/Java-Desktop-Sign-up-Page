@@ -64,33 +64,30 @@ void signin() throws ClassNotFoundException, SQLException {
         boolean hasDigit = pwd.matches(".*\\d.*");
         boolean hasSymbol = pwd.matches(".*[@#$!%^&*()].*");
 
-        // Array to store the error messages
-        String[] errorMessages = new String[4];
-        int index = 0;
+        StringBuilder errorMessage = new StringBuilder("Invalid Password:");
 
         if (!hasLowerCase) {
-            errorMessages[index++] = "Password must contain at least one lowercase letter.";
+            errorMessage.append("\n- Password must contain at least one lowercase letter.");
         }
 
         if (!hasUpperCase) {
-            errorMessages[index++] = "Password must contain at least one uppercase letter.";
+            errorMessage.append("\n- Password must contain at least one uppercase letter.");
         }
 
         if (!hasDigit) {
-            errorMessages[index++] = "Password must contain at least one digit.";
+            errorMessage.append("\n- Password must contain at least one digit.");
         }
 
         if (!hasSymbol) {
-            errorMessages[index++] = "Password must contain at least one symbol character.";
+            errorMessage.append("\n- Password must contain at least one symbol character.");
         }
 
-        if (index > 0) {
-            // Display individual pop-up messages for each requirement
-            for (int i = 0; i < index; i++) {
-                JOptionPane.showMessageDialog(null, errorMessages[i], "Invalid Password", JOptionPane.WARNING_MESSAGE);
-            }
-        } else if (pwd.length() < 8) {
-            JOptionPane.showMessageDialog(null, "Password should be at least 8 characters long.", "Invalid Password", JOptionPane.WARNING_MESSAGE);
+        if (pwd.length() < 8) {
+            errorMessage.append("\n- Password should be at least 8 characters long.");
+        }
+
+        if (errorMessage.length() > "Invalid Password:".length()) {
+            JOptionPane.showMessageDialog(null, errorMessage.toString(), "Invalid Password", JOptionPane.WARNING_MESSAGE);
         } else {
             double n = Double.parseDouble(number);
             sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
@@ -118,7 +115,6 @@ private boolean isValidGmailAddress(String email) {
     String regex = "^[A-Za-z0-9+_.-]+@gmail.com$";
     return email.matches(regex);
 }
-
 
     @SuppressWarnings("deprecation")
     void login() throws ClassNotFoundException {
