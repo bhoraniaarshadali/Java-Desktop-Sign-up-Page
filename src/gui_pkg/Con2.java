@@ -34,50 +34,64 @@ public class Con2 {
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projects", "root", "");
     }
 
-    @SuppressWarnings("deprecation")
-    void signin() throws ClassNotFoundException, SQLException {
-        getCon();
-        name = Signin.namesigin.getText();
-        number = Signin.numsigin.getText();
-        email = Signin.emailsigin.getText();
-        pwd = Signin.pwdsignin.getText();
-        
-            String sql = "SELECT * FROM registration_details WHERE Email=?";
-                ps = con.prepareStatement(sql);
-                ps.setString(1, email);
-                rs = ps.executeQuery();
+void signin() throws ClassNotFoundException, SQLException {
+    getCon();
+    name = Signin.namesigin.getText();
+    number = Signin.numsigin.getText();
+    email = Signin.emailsigin.getText();
+    pwd = Signin.pwdsignin.getText();
 
-            if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Email already registered!", "Error",
-                                JOptionPane.HEIGHT);        
-            } else if (name.isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Enter name!");
-            } else if (number.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter number!");
-            } else if (email.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter email!");
-            } else if (pwd.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter password!");
-            } else {
-            double n = Double.parseDouble(number);
-            sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
-            ps = con.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setDouble(2, n);
-            ps.setString(3, email);
-            ps.setString(4, pwd);
+    String sql = "SELECT * FROM registration_details WHERE Email=?";
+    ps = con.prepareStatement(sql);
+    ps.setString(1, email);
+    rs = ps.executeQuery();
 
-            int rowsAffected = ps.executeUpdate();
+    if (rs.next()) {
+        JOptionPane.showMessageDialog(null, "Email already registered!", "Error", JOptionPane.HEIGHT);
+    } else if (name.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter name!");
+    } else if (number.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter number!");
+    } else if (email.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter email!");
+    } else if (!isValidGmailAddress(email)) {
+        JOptionPane.showMessageDialog(null, "Invalid Email address!", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (pwd.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter password!");
+    } else if (!isValidPassword(pwd)) {
+        JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.", "Invalid Password", JOptionPane.WARNING_MESSAGE);
+    } else {
+        double n = Double.parseDouble(number);
+        sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
+        ps = con.prepareStatement(sql);
+        ps.setString(1, name);
+        ps.setDouble(2, n);
+        ps.setString(3, email);
+        ps.setString(4, pwd);
 
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Sign in Successful!");
-                Welcome_Page obj = new Welcome_Page();
-                obj.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Sign in Failed. Please try again.");
-            }
+        int rowsAffected = ps.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(rootPane, "Sign in Successful!");
+            Welcome_Page obj = new Welcome_Page();
+            obj.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Sign in Failed. Please try again.");
         }
     }
+}
+
+private boolean isValidGmailAddress(String email) {
+    // Gmail address validation logic
+    String regex = "^[A-Za-z0-9+_.-]+@gmail.com$";
+    return email.matches(regex);
+}
+
+private boolean isValidPassword(String password) {
+    // Password validation logic
+    String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%^&*()])[A-Za-z\\d@#$!%^&*()]{8,}$";
+    return password.matches(regex);
+}
 
     @SuppressWarnings("deprecation")
     void login() throws ClassNotFoundException {
