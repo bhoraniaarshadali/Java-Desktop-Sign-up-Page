@@ -79,7 +79,7 @@ public class Login extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/index_1.png"))); // NOI18N
 
         username.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        username.setText("Email");
+        username.setText("Email or Mobile Number");
 
         logininput.setBackground(new java.awt.Color(204, 204, 204));
         logininput.setForeground(new java.awt.Color(0, 0, 255));
