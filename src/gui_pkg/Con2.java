@@ -30,53 +30,59 @@ public class Con2 {
     }
 
     // Sign in method
-    public void signin() throws ClassNotFoundException, SQLException {
-        getCon();
+// Sign in method
+void signup() throws ClassNotFoundException, SQLException {
+    getCon();
 
-        String name = Signin.namesigin.getText();
-        String number = Signin.numsigin.getText();
-        String email = Signin.emailsigin.getText();
-        String pwd = Signin.pwdsignin.getText();
-        
-        if (isPhoneNumberAlreadyRegistered(number)) {
-            showErrorDialog("Phone number already registered!");
-        } else if (isEmailAlreadyRegistered(email)) {
-            showErrorDialog("Email already registered!");
-        } else if (name.isEmpty()) {
-            showErrorDialog("Enter name!");
-        } else if (number.isEmpty()) {
-            showErrorDialog("Enter number!");
-        } else if (!isValidMobileNumber(number)) {
-            showErrorDialog("Mobile number should be 10 digits long!");
-        } else if (email.isEmpty()) {
-            showErrorDialog("Enter email!");
-        } else if (!isValidGmailAddress(email)) {
-            showErrorDialog("Invalid Email address!");
-        } else if (pwd.isEmpty()) {
-            showErrorDialog("Enter password!");
-        } else if (!isValidPassword(pwd)) {
-            showErrorDialog("Invalid password!");
+    String name = Signup.namesigin.getText();
+    String number = Signup.numsigin.getText();
+    String email = Signup.emailsigin.getText();
+    String pwd = Signup.pwdsignin.getText();
+
+    if (isEmailAlreadyRegistered(email)) {
+        showErrorDialog("Email already registered!");
+    } else if (name.isEmpty()) {
+        showErrorDialog("Enter name!");
+    } else if (number.isEmpty()) {
+        showErrorDialog("Enter number!");
+    } else if (!isValidMobileNumber(number)) {
+        showErrorDialog("Mobile number should be 10 digits long!");
+    } else if (isPhoneNumberAlreadyRegistered(number)) {
+        showErrorDialog("Phone number already registered!");
+    } else if (email.isEmpty()) {
+        showErrorDialog("Enter email!");
+    } else if (!isValidGmailAddress(email)) {
+        showErrorDialog("Invalid Email address!");
+    } else if (pwd.isEmpty()) {
+        showErrorDialog("Enter password!");
+    } else if (!isValidPassword(pwd)) {
+        showErrorDialog("Invalid password!");
+    } else {
+        double n = Double.parseDouble(number);
+        String sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
+        ps = con.prepareStatement(sql);
+        ps.setString(1, name);
+        ps.setDouble(2, n);
+        ps.setString(3, email);
+        ps.setString(4, pwd);
+
+        int rowsAffected = ps.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Sign in Successful!");
+            Welcome_Page obj = new Welcome_Page();
+            obj.setVisible(true);
+            
+            // Close the sign-up page
+            Signup signinPage = new Signup();
+            signinPage.dispose();
         } else {
-            double n = Double.parseDouble(number);
-            String sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
-            ps = con.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setDouble(2, n);
-            ps.setString(3, email);
-            ps.setString(4, pwd);
-
-            int rowsAffected = ps.executeUpdate();
-
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Sign in Successful!");
-                Welcome_Page obj = new Welcome_Page();
-                obj.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+            JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
+}
+
 
     private boolean isEmailAlreadyRegistered(String email) throws SQLException {
         String sql = "SELECT * FROM registration_details WHERE Email=?";
@@ -119,8 +125,8 @@ public class Con2 {
     void login() throws ClassNotFoundException {
         try {
             getCon();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } 
+        catch (SQLException ex) {
         }
 
         // get user input for email or mobile number
@@ -162,7 +168,6 @@ public class Con2 {
                         JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (SQLException ex) {
-                    ex.printStackTrace();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Email/Mobile number format!", "Error",
@@ -174,6 +179,6 @@ public class Con2 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Con2 obj = new Con2();
         obj.getCon();
-        obj.signin();
+        obj.signup();
     }
 }

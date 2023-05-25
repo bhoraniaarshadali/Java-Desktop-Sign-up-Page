@@ -212,7 +212,7 @@ public class Confirm_Pwd extends javax.swing.JDialog {
                     int i=ps.executeUpdate();
                     if(i!=0)
                         {
-                        JOptionPane.showMessageDialog(rootPane, "Password change Successfully.");                        Signin objSignin=new Signin();
+                        JOptionPane.showMessageDialog(rootPane, "Password change Successfully.");                        Signup objSignin=new Signup();
                         Login objLogin = new Login();
                         objLogin.setVisible(true);
                         objLogin.setTitle("Login");

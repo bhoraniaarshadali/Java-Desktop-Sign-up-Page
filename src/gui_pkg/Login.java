@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         login_head1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         login_head1.setForeground(new java.awt.Color(0, 0, 255));
-        login_head1.setText("Login");
+        login_head1.setText("Sign in");
 
         minimize.setBackground(new java.awt.Color(102, 102, 102));
         minimize.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame {
 
         Loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Loginbtn.setForeground(new java.awt.Color(102, 102, 102));
-        Loginbtn.setText("Login");
+        Loginbtn.setText("Sign in");
         Loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Loginbtn.setMaximumSize(new java.awt.Dimension(72, 27));
         Loginbtn.setMinimumSize(new java.awt.Dimension(72, 27));
@@ -106,7 +106,7 @@ public class Login extends javax.swing.JFrame {
 
         signinbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         signinbtn.setForeground(new java.awt.Color(102, 102, 102));
-        signinbtn.setText("Sign in");
+        signinbtn.setText("Sign up");
         signinbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signinbtn.setMaximumSize(new java.awt.Dimension(72, 27));
         signinbtn.setMinimumSize(new java.awt.Dimension(72, 27));
@@ -160,11 +160,11 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(login_head1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(logininput, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(login_head1)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
                                 .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,7 +244,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_signinbtnMouseClicked
 
     private void signinbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinbtnActionPerformed
-        Signin obj = new Signin();
+        Signup obj = new Signup();
         this.setState(JFrame.ICONIFIED);    //for close old window
         obj.setVisible(true);
         obj.setTitle("Sign in");

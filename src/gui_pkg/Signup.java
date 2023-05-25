@@ -13,12 +13,12 @@ import javax.swing.JFrame;
  *
  * @author Apex
  */
-public class Signin extends javax.swing.JFrame {
+public class Signup extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    public Signin() {
+    public Signup() {
         initComponents();
     }
 
@@ -54,7 +54,7 @@ public class Signin extends javax.swing.JFrame {
 
         signin_head.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         signin_head.setForeground(new java.awt.Color(0, 0, 255));
-        signin_head.setText("Sign in");
+        signin_head.setText("Sign up");
         jPanel1.add(signin_head);
         signin_head.setBounds(30, 70, 120, 42);
 
@@ -128,7 +128,7 @@ public class Signin extends javax.swing.JFrame {
         jLabel1.setBounds(273, 103, 470, 399);
 
         Signin_btn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Signin_btn1.setText("Sign in");
+        Signin_btn1.setText("Sign up");
         Signin_btn1.setMargin(new java.awt.Insets(5, 5, 5, 5));
         Signin_btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,7 @@ public class Signin extends javax.swing.JFrame {
 
         pwd1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd1.setForeground(new java.awt.Color(0, 0, 255));
-        pwd1.setText("login with exiting account");
+        pwd1.setText("sign-in with exiting account");
         pwd1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pwd1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         pwd1.setDoubleBuffered(true);
@@ -167,7 +167,7 @@ public class Signin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(pwd1);
-        pwd1.setBounds(70, 360, 150, 20);
+        pwd1.setBounds(70, 360, 160, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,9 +222,9 @@ public class Signin extends javax.swing.JFrame {
             Con2 objCon2 = new Con2();
         try {
             objCon2.getCon();
-            objCon2.signin();
+            objCon2.signup();
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Signin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
@@ -245,8 +245,9 @@ public class Signin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Signin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         //</editor-fold>
@@ -278,7 +279,7 @@ public class Signin extends javax.swing.JFrame {
 
         @Override
         public void run() {
-            new Signin().setVisible(true);
+            new Signup().setVisible(true);
         }
     }
 }
