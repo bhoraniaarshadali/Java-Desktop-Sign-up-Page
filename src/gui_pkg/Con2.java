@@ -10,10 +10,9 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class Con2 {
-    public static Connection con;
-    public static PreparedStatement ps;
-    public static ResultSet rs;
-            
+     static Connection con;
+     static PreparedStatement ps;
+     static  ResultSet rs;
 
     private static final Pattern GMAIL_ADDRESS_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@gmail.com$");
 
@@ -38,8 +37,10 @@ public class Con2 {
         String number = Signin.numsigin.getText();
         String email = Signin.emailsigin.getText();
         String pwd = Signin.pwdsignin.getText();
-
-        if (isEmailAlreadyRegistered(email)) {
+        
+        if (isPhoneNumberAlreadyRegistered(number)) {
+            showErrorDialog("Phone number already registered!");
+        } else if (isEmailAlreadyRegistered(email)) {
             showErrorDialog("Email already registered!");
         } else if (name.isEmpty()) {
             showErrorDialog("Enter name!");
@@ -85,6 +86,14 @@ public class Con2 {
         return rs.next();
     }
 
+    private boolean isPhoneNumberAlreadyRegistered(String number) throws SQLException {
+        String sql = "SELECT * FROM registration_details WHERE number=?";
+        ps = con.prepareStatement(sql);
+        ps.setString(1, number);
+        ResultSet rs = ps.executeQuery();
+        return rs.next();
+    }
+
     private boolean isValidMobileNumber(String number) {
         return number.length() == 10 && number.matches("\\d+");
     }
@@ -111,7 +120,7 @@ public class Con2 {
         try {
             getCon();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(Con2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
         // get user input for email or mobile number
@@ -153,7 +162,7 @@ public class Con2 {
                         JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(Con2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Email/Mobile number format!", "Error",
