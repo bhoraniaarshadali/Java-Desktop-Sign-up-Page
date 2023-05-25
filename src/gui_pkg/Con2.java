@@ -15,7 +15,7 @@ public class Con2 {
     String number;
     String email;
     String pwd;
-    String loginemail;
+  //String loginemail;
     String loginpwd;
 
     public static Connection con;
@@ -118,41 +118,53 @@ private boolean isValidGmailAddress(String email) {
 
     @SuppressWarnings("deprecation")
     void login() throws ClassNotFoundException {
+    try {
+        getCon();
+    } catch (SQLException ex) {
+        Logger.getLogger(Con2.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    // get user input for email or mobile number
+    String loginInput = Login.logininput.getText();
+    loginpwd = Login.pwdlogin.getText();
+
+    // if mobile number or password is empty!
+    if (loginInput.isEmpty() || loginpwd.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Email/Mobile number and Password should not be empty!");
+    } else {
         try {
-            getCon();
+            // Query to check if email or mobile number exists in the database along with the correct password
+            String sql = "SELECT * FROM registration_details WHERE (Email=? OR Number=?) AND Password=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, loginInput);
+            ps.setString(2, loginInput);
+            ps.setString(3, loginpwd);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                // Successful login
+                Welcome_Page obj = new Welcome_Page();
+                obj.setTitle("Welcome Page");
+                obj.setVisible(true);
+                System.out.println("Email/Number: " + loginInput + "\n" + "password: " + loginpwd);
+            } else {
+                // Incorrect email or mobile number
+                boolean isEmail = loginInput.contains("@");
+                String errorMessage;
+                
+                if (isEmail) {
+                    errorMessage = "Email or Password is incorrect";
+                } else {
+                    errorMessage = "Mobile number or Password is incorrect";
+                }
+                JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Con2.class.getName()).log(Level.SEVERE, null, ex);
         }
-        loginemail = Login.logininput.getText();
-        loginpwd = Login.pwdlogin.getText();
-
-        if (loginemail.isEmpty() && loginpwd.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email and Password should not be empty!");
-        } else if (loginemail.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter email!");
-        } else if (loginpwd.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter password!");
-        } else {
-            try {
-                String sql = "SELECT * FROM registration_details WHERE Email=? AND Password=?";
-                ps = con.prepareStatement(sql);
-                ps.setString(1, loginemail);
-                ps.setString(2, loginpwd);
-                rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    Welcome_Page obj = new Welcome_Page();
-                    obj.setTitle("Welcome Page");
-                    obj.setVisible(true);
-                    System.out.println("email: " + loginemail + "\n" + "password: " + loginpwd);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Email or Password not found.", "Error", JOptionPane.HEIGHT);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Con2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
+}
+
     public static void main(String[] args) throws ClassNotFoundException, SQLException 
     {
         Con2 obj = new Con2();
