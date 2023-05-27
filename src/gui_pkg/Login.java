@@ -76,8 +76,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/index_1.png"))); // NOI18N
-
         username.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         username.setText("Email or Mobile Number");
 
@@ -122,7 +120,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         pwd1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
