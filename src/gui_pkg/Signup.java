@@ -164,9 +164,14 @@ public class Signup extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(12, 30, 0, 0);
         jPanel1.add(username3, gridBagConstraints);
 
+        sigin_cancel_btn.setBackground(new java.awt.Color(234, 234, 234));
         sigin_cancel_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sigin_cancel_btn.setForeground(new java.awt.Color(0, 0, 255));
         sigin_cancel_btn.setText("Cancel");
         sigin_cancel_btn.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        sigin_cancel_btn.setMaximumSize(new java.awt.Dimension(54, 28));
+        sigin_cancel_btn.setMinimumSize(new java.awt.Dimension(54, 28));
+        sigin_cancel_btn.setPreferredSize(new java.awt.Dimension(54, 28));
         sigin_cancel_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sigin_cancel_btnActionPerformed(evt);
@@ -192,7 +197,9 @@ public class Signup extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(53, 14, 9, 0);
         jPanel1.add(jLabel1, gridBagConstraints);
 
+        Signin_btn1.setBackground(new java.awt.Color(234, 234, 234));
         Signin_btn1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Signin_btn1.setForeground(new java.awt.Color(0, 0, 255));
         Signin_btn1.setText("Sign up");
         Signin_btn1.setMargin(new java.awt.Insets(5, 5, 5, 5));
         Signin_btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +247,7 @@ public class Signup extends javax.swing.JFrame {
 
         pwd1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd1.setForeground(new java.awt.Color(0, 0, 255));
-        pwd1.setText("sign-in with exiting account");
+        pwd1.setText("Sign in with exiting account");
         pwd1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pwd1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         pwd1.setDoubleBuffered(true);
@@ -264,7 +271,7 @@ public class Signup extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(

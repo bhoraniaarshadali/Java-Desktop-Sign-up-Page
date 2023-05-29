@@ -134,13 +134,15 @@ public class Forgot_Pwd extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(3, 18, 0, 0);
         getContentPane().add(forgot_email, gridBagConstraints);
 
+        check.setBackground(new java.awt.Color(234, 234, 234));
         check.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        check.setForeground(new java.awt.Color(102, 102, 102));
+        check.setForeground(new java.awt.Color(0, 0, 255));
         check.setText("Verify");
         check.setActionCommand("Verify");
         check.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        check.setMaximumSize(new java.awt.Dimension(72, 27));
-        check.setMinimumSize(new java.awt.Dimension(72, 27));
+        check.setMaximumSize(new java.awt.Dimension(54, 28));
+        check.setMinimumSize(new java.awt.Dimension(54, 28));
+        check.setPreferredSize(new java.awt.Dimension(54, 28));
         check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkActionPerformed(evt);
@@ -251,9 +253,6 @@ public class Forgot_Pwd extends javax.swing.JFrame {
             }
             else if(rs.next())
             {
-                //success obj0= new success();
-                //obj0.setTitle("Change Passoword");
-                //obj0.setVisible(true);
                 System.out.println("email: "+email0+"\n"+"password: "+number0);
                 JOptionPane.showMessageDialog(rootPane, "Credential Match\n OTP sent on your Email");   
                 

@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pwdlogin = new javax.swing.JPasswordField();
         login_head1 = new javax.swing.JLabel();
@@ -39,6 +40,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(647, 454));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         pwdlogin.setBackground(new java.awt.Color(204, 204, 204));
         pwdlogin.setForeground(new java.awt.Color(0, 0, 255));
@@ -48,10 +50,27 @@ public class Login extends javax.swing.JFrame {
                 pwdloginActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 8, 0, 0);
+        getContentPane().add(pwdlogin, gridBagConstraints);
 
         login_head1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         login_head1.setForeground(new java.awt.Color(0, 0, 255));
-        login_head1.setText("Login");
+        login_head1.setText("Sign in");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(34, 8, 0, 0);
+        getContentPane().add(login_head1, gridBagConstraints);
 
         minimize.setBackground(new java.awt.Color(102, 102, 102));
         minimize.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -63,6 +82,13 @@ public class Login extends javax.swing.JFrame {
                 minimizeMouseClicked(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 53, 0, 0);
+        getContentPane().add(minimize, gridBagConstraints);
 
         closebtn.setBackground(new java.awt.Color(102, 102, 102));
         closebtn.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -74,11 +100,35 @@ public class Login extends javax.swing.JFrame {
                 closebtnMouseClicked(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 27);
+        getContentPane().add(closebtn, gridBagConstraints);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/index_1.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 108, 0);
+        getContentPane().add(image, gridBagConstraints);
 
         username.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         username.setText("Email or Mobile Number");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 42;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 8, 0, 0);
+        getContentPane().add(username, gridBagConstraints);
 
         logininput.setBackground(new java.awt.Color(204, 204, 204));
         logininput.setForeground(new java.awt.Color(0, 0, 255));
@@ -90,26 +140,49 @@ public class Login extends javax.swing.JFrame {
                 logininputActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 8, 0, 0);
+        getContentPane().add(logininput, gridBagConstraints);
+        logininput.getAccessibleContext().setAccessibleName("");
+        logininput.getAccessibleContext().setAccessibleDescription("");
 
+        Loginbtn.setBackground(new java.awt.Color(234, 234, 234));
         Loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Loginbtn.setForeground(new java.awt.Color(102, 102, 102));
-        Loginbtn.setText("Login");
+        Loginbtn.setForeground(new java.awt.Color(0, 0, 255));
+        Loginbtn.setText("Sign in");
         Loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Loginbtn.setMaximumSize(new java.awt.Dimension(72, 27));
-        Loginbtn.setMinimumSize(new java.awt.Dimension(72, 27));
+        Loginbtn.setMaximumSize(new java.awt.Dimension(54, 28));
+        Loginbtn.setMinimumSize(new java.awt.Dimension(54, 28));
+        Loginbtn.setPreferredSize(new java.awt.Dimension(54, 28));
         Loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginbtnActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 43;
+        gridBagConstraints.ipady = -1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 12, 0, 0);
+        getContentPane().add(Loginbtn, gridBagConstraints);
 
+        signinbtn.setBackground(new java.awt.Color(234, 234, 234));
         signinbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        signinbtn.setForeground(new java.awt.Color(102, 102, 102));
-        signinbtn.setText("Sign in");
+        signinbtn.setForeground(new java.awt.Color(0, 0, 255));
+        signinbtn.setText("Sign up");
         signinbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signinbtn.setMaximumSize(new java.awt.Dimension(72, 27));
-        signinbtn.setMinimumSize(new java.awt.Dimension(72, 27));
-        signinbtn.setPreferredSize(new java.awt.Dimension(72, 27));
+        signinbtn.setMaximumSize(new java.awt.Dimension(54, 28));
+        signinbtn.setMinimumSize(new java.awt.Dimension(54, 28));
+        signinbtn.setPreferredSize(new java.awt.Dimension(54, 28));
         signinbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signinbtnMouseClicked(evt);
@@ -120,9 +193,27 @@ public class Login extends javax.swing.JFrame {
                 signinbtnActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 43;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 12, 0, 0);
+        getContentPane().add(signinbtn, gridBagConstraints);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -62;
+        gridBagConstraints.ipady = -110;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
         pwd1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd1.setForeground(new java.awt.Color(0, 0, 255));
@@ -136,78 +227,23 @@ public class Login extends javax.swing.JFrame {
                 pwd1MouseClicked(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 13, 0, 0);
+        getContentPane().add(pwd1, gridBagConstraints);
 
         pwd2.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd2.setText("Password");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(420, 420, 420)
-                        .addComponent(minimize)
-                        .addGap(10, 10, 10)
-                        .addComponent(closebtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(image)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(login_head1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(logininput, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(signinbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minimize)
-                    .addComponent(closebtn))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(login_head1)
-                        .addGap(18, 18, 18)
-                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(logininput, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(pwd2)
-                        .addGap(6, 6, 6)
-                        .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(pwd1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(signinbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(108, 108, 108))
-        );
-
-        logininput.getAccessibleContext().setAccessibleName("");
-        logininput.getAccessibleContext().setAccessibleDescription("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 8, 0, 0);
+        getContentPane().add(pwd2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

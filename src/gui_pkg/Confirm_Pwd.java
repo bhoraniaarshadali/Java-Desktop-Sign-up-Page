@@ -74,6 +74,7 @@ public class Confirm_Pwd extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         pwd3 = new javax.swing.JLabel();
         new_pwd = new javax.swing.JTextField();
@@ -86,9 +87,17 @@ public class Confirm_Pwd extends javax.swing.JDialog {
                 closeDialog(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         pwd3.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd3.setText("Enter New Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(67, 97, 0, 0);
+        getContentPane().add(pwd3, gridBagConstraints);
 
         new_pwd.setBackground(new java.awt.Color(204, 204, 204));
         new_pwd.setForeground(new java.awt.Color(0, 0, 255));
@@ -98,9 +107,24 @@ public class Confirm_Pwd extends javax.swing.JDialog {
                 new_pwdActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 97, 0, 100);
+        getContentPane().add(new_pwd, gridBagConstraints);
 
         pwd4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         pwd4.setText("Re-write Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 97, 0, 0);
+        getContentPane().add(pwd4, gridBagConstraints);
 
         new_re_pwd.setBackground(new java.awt.Color(204, 204, 204));
         new_re_pwd.setForeground(new java.awt.Color(0, 0, 255));
@@ -110,54 +134,37 @@ public class Confirm_Pwd extends javax.swing.JDialog {
                 new_re_pwdActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 97, 0, 100);
+        getContentPane().add(new_re_pwd, gridBagConstraints);
 
+        Submit_new_pwd.setBackground(new java.awt.Color(234, 234, 234));
         Submit_new_pwd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Submit_new_pwd.setForeground(new java.awt.Color(102, 102, 102));
+        Submit_new_pwd.setForeground(new java.awt.Color(0, 0, 255));
         Submit_new_pwd.setText("Change Password");
         Submit_new_pwd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Submit_new_pwd.setMaximumSize(new java.awt.Dimension(72, 27));
-        Submit_new_pwd.setMinimumSize(new java.awt.Dimension(72, 27));
+        Submit_new_pwd.setMaximumSize(new java.awt.Dimension(54, 28));
+        Submit_new_pwd.setMinimumSize(new java.awt.Dimension(54, 28));
+        Submit_new_pwd.setPreferredSize(new java.awt.Dimension(54, 28));
         Submit_new_pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Submit_new_pwdActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pwd3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(87, 87, 87))
-                    .addComponent(new_pwd)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pwd4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(99, 99, 99))
-                    .addComponent(new_re_pwd)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Submit_new_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(100, 100, 100))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(pwd3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(new_pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pwd4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(new_re_pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(Submit_new_pwd, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                .addGap(63, 63, 63))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 97, 63, 0);
+        getContentPane().add(Submit_new_pwd, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
