@@ -136,7 +136,8 @@ public class Forgot_Pwd extends javax.swing.JFrame {
 
         check.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         check.setForeground(new java.awt.Color(102, 102, 102));
-        check.setText("Check");
+        check.setText("Verify");
+        check.setActionCommand("Verify");
         check.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         check.setMaximumSize(new java.awt.Dimension(72, 27));
         check.setMinimumSize(new java.awt.Dimension(72, 27));

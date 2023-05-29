@@ -113,7 +113,7 @@ public class Confirm_Pwd extends javax.swing.JDialog {
 
         Submit_new_pwd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Submit_new_pwd.setForeground(new java.awt.Color(102, 102, 102));
-        Submit_new_pwd.setText("Submit");
+        Submit_new_pwd.setText("Change Password");
         Submit_new_pwd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Submit_new_pwd.setMaximumSize(new java.awt.Dimension(72, 27));
         Submit_new_pwd.setMinimumSize(new java.awt.Dimension(72, 27));
@@ -139,8 +139,8 @@ public class Confirm_Pwd extends javax.swing.JDialog {
                         .addGap(99, 99, 99))
                     .addComponent(new_re_pwd)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Submit_new_pwd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(113, 113, 113)))
+                        .addComponent(Submit_new_pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
