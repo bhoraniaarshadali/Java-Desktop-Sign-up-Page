@@ -39,7 +39,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(647, 454));
-        setPreferredSize(new java.awt.Dimension(700, 500));
 
         pwdlogin.setBackground(new java.awt.Color(204, 204, 204));
         pwdlogin.setForeground(new java.awt.Color(0, 0, 255));
@@ -52,7 +51,7 @@ public class Login extends javax.swing.JFrame {
 
         login_head1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         login_head1.setForeground(new java.awt.Color(0, 0, 255));
-        login_head1.setText("Sign in");
+        login_head1.setText("Login");
 
         minimize.setBackground(new java.awt.Color(102, 102, 102));
         minimize.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -76,6 +75,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/index_1.png"))); // NOI18N
+
         username.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         username.setText("Email or Mobile Number");
 
@@ -92,7 +93,7 @@ public class Login extends javax.swing.JFrame {
 
         Loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Loginbtn.setForeground(new java.awt.Color(102, 102, 102));
-        Loginbtn.setText("Sign in");
+        Loginbtn.setText("Login");
         Loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Loginbtn.setMaximumSize(new java.awt.Dimension(72, 27));
         Loginbtn.setMinimumSize(new java.awt.Dimension(72, 27));
@@ -104,7 +105,7 @@ public class Login extends javax.swing.JFrame {
 
         signinbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         signinbtn.setForeground(new java.awt.Color(102, 102, 102));
-        signinbtn.setText("Sign up");
+        signinbtn.setText("Sign in");
         signinbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signinbtn.setMaximumSize(new java.awt.Dimension(72, 27));
         signinbtn.setMinimumSize(new java.awt.Dimension(72, 27));
@@ -120,6 +121,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui_pkg/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         pwd1.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
@@ -157,11 +159,11 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(login_head1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(logininput, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(pwd2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(login_head1)))
+                                    .addComponent(pwdlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
                                 .addComponent(pwd1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
