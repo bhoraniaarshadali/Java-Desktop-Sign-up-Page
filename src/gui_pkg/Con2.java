@@ -13,7 +13,11 @@ public class Con2 {
      static Connection con;
      static PreparedStatement ps;
      static  ResultSet rs;
-
+     String name;
+     String number;
+     String email;
+     String pwd;
+     
     private static final Pattern GMAIL_ADDRESS_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@gmail.com$");
 
     public Con2() {
@@ -30,35 +34,63 @@ public class Con2 {
     }
 
     // Sign in method
-    public void signup() throws ClassNotFoundException, SQLException {
-        getCon();
+    void signup() throws ClassNotFoundException, SQLException {
+    getCon();
+    name = Signup.namesigin.getText();
+    number = Signup.numsigin.getText();
+    email = Signup.emailsigin.getText();
+    pwd = Signup.pwdsignin.getText();
 
-        String name = Signup.namesigin.getText();
-        String number = Signup.numsigin.getText();
-        String email = Signup.emailsigin.getText();
-        String pwd = Signup.pwdsignin.getText();
-        
-        if (isPhoneNumberAlreadyRegistered(number)) {
-            showErrorDialog("Phone number already registered!");
-        } else if (isEmailAlreadyRegistered(email)) {
-            showErrorDialog("Email already registered!");
-        } else if (name.isEmpty()) {
-            showErrorDialog("Enter name!");
-        } else if (number.isEmpty()) {
-            showErrorDialog("Enter number!");
-        } else if (!isValidMobileNumber(number)) {
-            showErrorDialog("Mobile number should be 10 digits long!");
-        } else if (email.isEmpty()) {
-            showErrorDialog("Enter email!");
-        } else if (!isValidGmailAddress(email)) {
-            showErrorDialog("Invalid Email address!");
-        } else if (pwd.isEmpty()) {
-            showErrorDialog("Enter password!");
-        } else if (!isValidPassword(pwd)) {
-            showErrorDialog("Invalid password!");
+    String sql = "SELECT * FROM registration_details WHERE Email=?";
+    ps = con.prepareStatement(sql);
+    ps.setString(1, email);
+    rs = ps.executeQuery();
+
+    if (rs.next()) {
+        JOptionPane.showMessageDialog(null, "Email already registered!", "Error", JOptionPane.HEIGHT);
+    } else if (name.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter name!");
+    } else if (number.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter number!");
+    } else if (email.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter email!");
+    } else if (!isValidGmailAddress(email)) {
+        JOptionPane.showMessageDialog(null, "Invalid Email address!", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (pwd.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Enter password!");
+    } else {
+        boolean hasLowerCase = pwd.matches(".*[a-z].*");
+        boolean hasUpperCase = pwd.matches(".*[A-Z].*");
+        boolean hasDigit = pwd.matches(".*\\d.*");
+        boolean hasSymbol = pwd.matches(".*[@#$!%^&*()].*");
+
+        StringBuilder errorMessage = new StringBuilder("Invalid Password:");
+
+        if (!hasLowerCase) {
+            errorMessage.append("\n- Password must contain at least one lowercase letter.");
+        }
+
+        if (!hasUpperCase) {
+            errorMessage.append("\n- Password must contain at least one uppercase letter.");
+        }
+
+        if (!hasDigit) {
+            errorMessage.append("\n- Password must contain at least one digit.");
+        }
+
+        if (!hasSymbol) {
+            errorMessage.append("\n- Password must contain at least one symbol character.");
+        }
+
+        if (pwd.length() < 8) {
+            errorMessage.append("\n- Password should be at least 8 characters long.");
+        }
+
+        if (errorMessage.length() > "Invalid Password:".length()) {
+            JOptionPane.showMessageDialog(null, errorMessage.toString(), "Invalid Password", JOptionPane.WARNING_MESSAGE);
         } else {
             double n = Double.parseDouble(number);
-            String sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
+            sql = "INSERT INTO registration_details (name, number, email, password) VALUES (?, ?, ?, ?)";
             ps = con.prepareStatement(sql);
             ps.setString(1, name);
             ps.setDouble(2, n);
@@ -72,48 +104,17 @@ public class Con2 {
                 Welcome_Page obj = new Welcome_Page();
                 obj.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.", "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.");
             }
         }
     }
+}
 
-    private boolean isEmailAlreadyRegistered(String email) throws SQLException {
-        String sql = "SELECT * FROM registration_details WHERE Email=?";
-        ps = con.prepareStatement(sql);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
-        return rs.next();
-    }
-
-    private boolean isPhoneNumberAlreadyRegistered(String number) throws SQLException {
-        String sql = "SELECT * FROM registration_details WHERE number=?";
-        ps = con.prepareStatement(sql);
-        ps.setString(1, number);
-        ResultSet rs = ps.executeQuery();
-        return rs.next();
-    }
-
-    private boolean isValidMobileNumber(String number) {
-        return number.length() == 10 && number.matches("\\d+");
-    }
-
-    private boolean isValidGmailAddress(String email) {
-        return GMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }
-
-    private boolean isValidPassword(String password) {
-        boolean hasLowerCase = password.matches(".*[a-z].*");
-        boolean hasUpperCase = password.matches(".*[A-Z].*");
-        boolean hasDigit = password.matches(".*\\d.*");
-        boolean hasSymbol = password.matches(".*[@#$!%^&*()].*");
-
-        return hasLowerCase && hasUpperCase && hasDigit && hasSymbol && password.length() >= 8;
-    }
-
-    private void showErrorDialog(String errorMessage) {
-        JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
-    }
+private boolean isValidGmailAddress(String email) {
+    // Gmail address validation logic
+    String regex = "^[A-Za-z0-9+_.-]+@gmail.com$";
+    return email.matches(regex);
+}
 
     // Login method
     void login() throws ClassNotFoundException {
