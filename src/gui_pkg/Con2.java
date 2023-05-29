@@ -23,6 +23,7 @@ public class Con2 {
     public Con2() {
         con = null;
         ps = null;
+        rs = null;
     }
 
     public void getCon() throws ClassNotFoundException, SQLException {
@@ -34,7 +35,7 @@ public class Con2 {
     }
 
     // Sign in method
-    void signup() throws ClassNotFoundException, SQLException {
+void signup() throws ClassNotFoundException, SQLException {
     getCon();
     name = Signup.namesigin.getText();
     number = Signup.numsigin.getText();
@@ -52,6 +53,10 @@ public class Con2 {
         JOptionPane.showMessageDialog(null, "Enter name!");
     } else if (number.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Enter number!");
+    } else if (!isNumeric(number)) {
+        JOptionPane.showMessageDialog(null, "Mobile number should contain numeric digits only!", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (number.length() != 10) {
+        JOptionPane.showMessageDialog(null, "Mobile number should be 10 digits!", "Error", JOptionPane.WARNING_MESSAGE);
     } else if (email.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Enter email!");
     } else if (!isValidGmailAddress(email)) {
@@ -100,21 +105,21 @@ public class Con2 {
             int rowsAffected = ps.executeUpdate();
 
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "Sign in Successful!");
+                JOptionPane.showMessageDialog(null, "Sign up Successful!");
                 Welcome_Page obj = new Welcome_Page();
                 obj.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Sign in Failed. Please try again.");
+                JOptionPane.showMessageDialog(null, "Sign up Failed. Please try again.");
             }
         }
     }
 }
 
-private boolean isValidGmailAddress(String email) {
-    // Gmail address validation logic
-    String regex = "^[A-Za-z0-9+_.-]+@gmail.com$";
-    return email.matches(regex);
+private boolean isNumeric(String str) {
+    return str.matches("\\d+");
 }
+
+
 
     // Login method
     void login() throws ClassNotFoundException {
@@ -143,7 +148,7 @@ private boolean isValidGmailAddress(String email) {
                     ps.setString(1, loginInput);
                     ps.setString(2, loginInput);
                     ps.setString(3, loginpwd);
-                    ResultSet rs = ps.executeQuery();
+                    rs = ps.executeQuery();
 
                     if (rs.next()) {
                         // Successful login
@@ -174,5 +179,10 @@ private boolean isValidGmailAddress(String email) {
         Con2 obj = new Con2();
         obj.getCon();
         obj.signup();
+    }
+
+    private boolean isValidGmailAddress(String email) {
+    String regex = "^[A-Za-z0-9+_.-]+@gmail.com$";
+    return email.matches(regex);
     }
 }
